@@ -1,0 +1,1 @@
+Projeto de gerenciamento de squads, desenvolvido com o intuito de ajudar guildas do jogo Ragnarok Origins Online (ROO).
