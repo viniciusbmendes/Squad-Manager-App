@@ -1,7 +1,7 @@
 
 ## Descrição
 
-O **ROO Guild Manager** é um projeto criado para ajudar guildas do jogo **Ragnarok Online Origins (ROO)** a gerenciar seus membros em squads e grupos, facilitando a organização para as guerras dentro do jogo. O aplicativo oferece uma interface amigável para criação, edição e visualização de squads, além de várias ferramentas para administração da guilda.
+O **Squad Manager** é um projeto criado para ajudar guildas do jogo **Ragnarok Online Origins (ROO)** a gerenciar seus membros em squads e grupos, facilitando a organização para as guerras dentro do jogo. O aplicativo oferece uma interface amigável para criação, edição e visualização de squads, além de várias ferramentas para administração da guilda.
 
 ## Funcionalidades
 
