@@ -1,5 +1,5 @@
 import './App.css'
-import Members from './pages/members'
+import Players from './pages/players'
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,8 +11,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Members />} />
-        <Route path="/members" element={<Members />} />
+        <Route path="/" element={<Players />} />
+        <Route path="/members" element={<Players />} />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
     </Router>

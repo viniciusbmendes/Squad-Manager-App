@@ -51,7 +51,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.members-list {
+.players-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1em;
@@ -59,7 +59,7 @@ button:focus-visible {
 
 }
 
-.member {
+.player {
   max-width: 300px;
   min-width: 200px;
   display: flex;
