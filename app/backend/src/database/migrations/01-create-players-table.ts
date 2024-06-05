@@ -4,7 +4,7 @@ import { IPlayer } from '../../interfaces/players/IPlayer';
 export default {
   up(queryInterface: QueryInterface) {
     return queryInterface.createTable<Model<IPlayer>>('players', {
-      id: {
+      player_id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
@@ -17,11 +17,6 @@ export default {
       class: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      missedWars: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        defaultValue: 0,
       },
     });
   },

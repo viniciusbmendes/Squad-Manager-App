@@ -1,21 +1,15 @@
 import { QueryInterface } from 'sequelize';
+import { readCSV } from '../../utils/csvReader';
 
 export default {
   up: async (QueryInterface: QueryInterface) => {
-    await QueryInterface.bulkInsert('players', [
-      {
-        nickname: 'johndoe',
-        class: 'mage',
-      },
-      {
-        nickname: 'janedoe',
-        class: 'warrior',
-      },
-      {
-        nickname: 'marydoe',
-        class: 'priest',
-      },
-    ], {});
+    try{
+      const players = await readCSV('../../../data/Membros_Sugar.csv');
+      console.log("LOG", players);
+      await QueryInterface.bulkInsert('players', players);
+    } catch (error) {
+      console.error(error);
+    }
   },
   down: async (QueryInterface: QueryInterface) => {
     await QueryInterface.bulkDelete('players', {});

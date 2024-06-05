@@ -1,6 +1,5 @@
 export interface IPlayer {
-  id?: number;
+  player_id?: number;
   nickname: string;
   class: string;
-  missedWars?: number;
 }

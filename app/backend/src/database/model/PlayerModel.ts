@@ -1,15 +1,16 @@
 import { InferAttributes, Model, InferCreationAttributes, CreationOptional, DataTypes } from 'sequelize';
 import db from '.'
+import SequelizeParty from './PartyModel';
+import SequelizeMissedWar from './MissedWarsModel';
 
 class SequelizePlayer extends Model<InferAttributes<SequelizePlayer>, InferCreationAttributes<SequelizePlayer>> {
-  declare id: CreationOptional<number>;
+  declare player_id: CreationOptional<number>;
   declare nickname: string;
   declare class: string;
-  declare missedWars: CreationOptional<number>;
 }
 
 SequelizePlayer.init({
-  id: {
+  player_id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
@@ -23,15 +24,13 @@ SequelizePlayer.init({
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  missedWars: {
-    type: DataTypes.INTEGER,
-    defaultValue: 0,
-    allowNull: true,
-  },
 }, {
   sequelize: db,
   tableName: 'players',
   timestamps: false,
 });
+
+SequelizePlayer.hasMany(SequelizeMissedWar, {as: 'missed_wars', foreignKey: 'player_id'});
+SequelizeMissedWar.belongsTo(SequelizePlayer, {as: 'player', foreignKey: 'player_id'});
 
 export default SequelizePlayer;
