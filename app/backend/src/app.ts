@@ -1,5 +1,6 @@
 import express from 'express';
 import router from './routes';
+import cors from 'cors';
 
 class App {
   public app: express.Express;
@@ -8,6 +9,8 @@ class App {
     this.app = express();
 
     this.app.use(express.json());
+
+    this.app.use(cors());
 
     // Não remover essa rota
     this.app.get('/', (_req, res) => res.status(200).send('Squad Manager API no ar!'));
