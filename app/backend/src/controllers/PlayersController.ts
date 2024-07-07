@@ -21,4 +21,11 @@ export default class PlayersController {
     const { status, data } = await this.playersService.deletePlayer(id);
     return res.status(mapStatusHTTP(status)).json(data);
   }
+
+  public async updatePlayer(req: Request, res: Response): Promise<Response> {
+    const id = Number(req.params.id);
+    const player = req.body;
+    const { status, data } = await this.playersService.updatePlayer(id, player);
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
 }

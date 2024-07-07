@@ -23,4 +23,13 @@ export default class PlayersModel implements IPlayerModel {
     await player.destroy();
     return;
   }
+
+  async updatePlayer(id: number, player: IPlayer) {
+    const playerToUpdate = await this.model.findByPk(id);
+    if (playerToUpdate) {
+      await playerToUpdate.update(player);
+      return playerToUpdate;
+    }
+    throw new Error('Player not found');
+  }
 }

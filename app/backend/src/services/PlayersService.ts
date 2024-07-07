@@ -40,4 +40,16 @@ export default class PlayersService {
       return { status: 'ERROR', data: { message: 'Internal server error' } };
     }
   }
+
+  public async updatePlayer(id: number, player: IPlayer): Promise<{ status: string, data: IPlayer | { message: string } }> {
+    try {
+      const playerUpdated = await this.playersModel.updatePlayer(id, player);
+      return { status: 'SUCCESSFUL', data: playerUpdated};
+    } catch (error: any) {
+      if (error instanceof Error) {
+        return { status: 'NOT_FOUND', data: { message: error.message } };
+      }
+      return { status: 'ERROR', data: { message: 'Internal server error' } };
+    }
+  }
 }
