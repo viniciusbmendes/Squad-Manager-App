@@ -14,4 +14,13 @@ export default class PlayersModel implements IPlayerModel {
     const newPlayer = await this.model.create(player);
     return newPlayer;
   }
+
+  async deletePlayer(id: number) {
+    const player = await this.model.findByPk(id);
+    if (!player) {
+      throw new Error('Player not found');
+    }
+    await player.destroy();
+    return;
+  }
 }

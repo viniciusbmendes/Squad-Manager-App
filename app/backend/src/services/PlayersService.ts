@@ -28,4 +28,16 @@ export default class PlayersService {
       return { status: 'ERROR', data: { message: 'Internal server error' } };
     }
   }
+
+  public async deletePlayer(id: number): Promise<{ status: string, data: { message: string } }> {
+    try {
+      await this.playersModel.deletePlayer(id);
+      return { status: 'NO_CONTENT', data: { message: 'Player deleted' } };
+    } catch (error: any) {
+      if (error instanceof Error) {
+        return { status: 'NOT_FOUND', data: { message: error.message } };
+      }
+      return { status: 'ERROR', data: { message: 'Internal server error' } };
+    }
+  }
 }
