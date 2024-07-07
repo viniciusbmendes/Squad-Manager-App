@@ -69,9 +69,16 @@ export default function Player(player: PlayerType) {
 		console.log('Editando jogador');
 		MySwal.fire({
 			title: 'Enter Player Details',
-			html: <EditPlayerForm playerData={player} players={players} setPlayers={setPlayers} />,
-			showCancelButton: true,
+			html: (
+				<EditPlayerForm
+					playerData={player}
+					players={players}
+					setPlayers={setPlayers}
+				/>
+			),
+			showCancelButton: false,
 			showConfirmButton: false,
+			showCloseButton: true,
 		});
 	};
 

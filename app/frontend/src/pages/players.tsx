@@ -42,7 +42,7 @@ function Players() {
 		MySwal.fire({
 			title: 'Enter Player Details',
 			html: <AddPlayerForm onSubmit={handleFormSubmit} players={players} setPlayers={setPlayers} />,
-			showCancelButton: true,
+			showCancelButton: false,
 			showConfirmButton: false,
 		});
 	};

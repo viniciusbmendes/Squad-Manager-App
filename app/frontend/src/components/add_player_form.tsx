@@ -70,6 +70,11 @@ const AddPlayerForm: React.FC<MyFormProps> = ({ onSubmit, players, setPlayers })
 		}
 	};
 
+	const handleCancel = (e: React.FormEvent) => {
+		e.preventDefault();
+		Swal.close();
+	};
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<label>
@@ -95,6 +100,7 @@ const AddPlayerForm: React.FC<MyFormProps> = ({ onSubmit, players, setPlayers })
 			</label>
 			<br />
 			<button type='submit'>Cadastrar</button>
+			<button onClick={handleCancel}>Cancelar</button>
 		</form>
 	);
 };
