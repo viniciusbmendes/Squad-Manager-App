@@ -83,7 +83,7 @@ export default function Player(player: PlayerType) {
 	};
 
 	return (
-		<div className='player' key={player_id}>
+		<div className={`player ${player.class}`} key={player_id}>
 			<h3>{nickname}</h3>
 			<p>{classe}</p>
 			<p>Faltas: {missedWars}</p>

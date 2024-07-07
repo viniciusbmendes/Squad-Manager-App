@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import AddPlayerForm from '../components/add_player_form';
 import PlayersContext from '../context/PlayersContext';
+import Filter from '../components/filter';
 
 const MySwal = withReactContent(Swal);
 
@@ -17,6 +18,7 @@ function Players() {
   }
 	const { players, setPlayers } = playersContext;
 	const [loading, setLoading] = useState(true);
+	const [filteredPlayers, setFilteredPlayers] = useState<PlayerType[]>(players);
 
 	useEffect(() => {
 		console.log('Componente montado');
@@ -53,8 +55,9 @@ function Players() {
 		<div>
 			<h1>Lista de Membros</h1>
 			<button onClick={showFormAlert}>Adicionar Membro</button>
+			<Filter setFilteredPlayers={setFilteredPlayers}/>
 			<div className='players-list'>
-				{players.map((member: PlayerType) => (
+				{filteredPlayers.map((member: PlayerType) => (
 					<Player key={member.player_id} {...member} />
 				))}
 			</div>
