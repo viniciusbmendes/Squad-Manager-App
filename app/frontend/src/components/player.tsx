@@ -2,6 +2,10 @@ import { useContext } from 'react';
 import { PlayerType } from '../types/PlayerType';
 import PlayersContext from '../context/PlayersContext';
 import Swal from 'sweetalert2';
+import EditPlayerForm from './edit_player_form';
+import withReactContent from 'sweetalert2-react-content';
+
+const MySwal = withReactContent(Swal);
 
 export default function Player(player: PlayerType) {
 	const { nickname, missedWars, player_id, class: classe } = player;
@@ -15,7 +19,7 @@ export default function Player(player: PlayerType) {
 	const handleDelete = async () => {
 		const result = await Swal.fire({
 			title: 'Você tem certeza?',
-			text: "Você não poderá reverter isso!",
+			text: 'Você não poderá reverter isso!',
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
@@ -44,21 +48,31 @@ export default function Player(player: PlayerType) {
 					setPlayers(newPlayers);
 				} else {
 					Swal.fire({
-						icon: "error",
-						title: "Oops...",
-						text: "Erro ao deletar jogador!",
+						icon: 'error',
+						title: 'Oops...',
+						text: 'Erro ao deletar jogador!',
 					});
 					console.error('Erro ao deletar player!');
 				}
 			} catch (error) {
 				Swal.fire({
-					icon: "error",
-					title: "Oops...",
-					text: "Algo deu errado! Tente novamente!",
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Algo deu errado! Tente novamente!',
 				});
 				console.error('Error:', error);
 			}
 		}
+	};
+
+	const handleEdit = () => {
+		console.log('Editando jogador');
+		MySwal.fire({
+			title: 'Enter Player Details',
+			html: <EditPlayerForm playerData={player} players={players} setPlayers={setPlayers} />,
+			showCancelButton: true,
+			showConfirmButton: false,
+		});
 	};
 
 	return (
@@ -67,7 +81,7 @@ export default function Player(player: PlayerType) {
 			<p>{classe}</p>
 			<p>Faltas: {missedWars}</p>
 			<div>
-				<button>Editar</button>
+				<button onClick={handleEdit}>Editar</button>
 				<button onClick={handleDelete}>Excluir</button>
 			</div>
 		</div>

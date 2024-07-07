@@ -4,17 +4,14 @@ import { PlayerType } from '../types/PlayerType';
 import { classes } from '../utils/classes';
 
 interface MyFormProps {
-	onSubmit: (data: { nickname: string; class: string }) => void;
+  playerData:PlayerType;
 	players:PlayerType[];
 	setPlayers:Dispatch<SetStateAction<PlayerType[]>>;
 }
 
-const AddPlayerForm: React.FC<MyFormProps> = ({ onSubmit, players, setPlayers }) => {
+const EditPlayerForm: React.FC<MyFormProps> = ({ playerData, players, setPlayers }) => {
 
-	const [player, setPlayer] = useState({
-		nickname: '',
-		class: classes[0],
-	});
+	const [player, setPlayer] = useState(playerData);
 
 	const handleChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -25,34 +22,29 @@ const AddPlayerForm: React.FC<MyFormProps> = ({ onSubmit, players, setPlayers })
 		});
 	};
 
-	const handleSubmit = async (e: React.FormEvent) => {
+	const handleEdit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		onSubmit({ nickname: player.nickname, class: player.class });
 
 		try {
-			const response = await fetch('http://localhost:3001/players', {
-				method: 'POST',
+			const response = await fetch(`http://localhost:3001/players/${playerData.player_id}`, {
+				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(player),
 			});
-
-			if (response.status === 409) {
-				Swal.fire({
-					icon: "warning",
-					title: "Oops...",
-					text: "Ja existe um player com esse nome!",
-				});
-			} else if (response.ok) {
+			if (response.ok) {
 				Swal.fire({
 					icon: "success",
-					title: "Player cadastrado com sucesso!",
+					title: "Player editado com sucesso!",
 					showConfirmButton: true,
 					timer: 4000,
 				})
 				const newPlayer = await response.json();
-				setPlayers([...players, newPlayer]);
+        const newPlayers = players.map((p) =>
+          p.player_id === newPlayer.player_id ? newPlayer : p
+        );
+				setPlayers(newPlayers);
 			} else {
 				Swal.fire({
 					icon: "warning",
@@ -71,7 +63,7 @@ const AddPlayerForm: React.FC<MyFormProps> = ({ onSubmit, players, setPlayers })
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={handleEdit}>
 			<label>
 				Nick:
 				<input
@@ -94,9 +86,9 @@ const AddPlayerForm: React.FC<MyFormProps> = ({ onSubmit, players, setPlayers })
 				</select>
 			</label>
 			<br />
-			<button type='submit'>Cadastrar</button>
+			<button type='submit'>Confirmar</button>
 		</form>
 	);
 };
 
-export default AddPlayerForm;
+export default EditPlayerForm;
