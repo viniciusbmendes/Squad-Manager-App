@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import Swal from 'sweetalert2';
+import { PlayerType } from '../types/PlayerType';
 
 interface MyFormProps {
 	onSubmit: (data: { nickname: string; class: string }) => void;
+	players:PlayerType[];
+	setPlayers:Dispatch<SetStateAction<PlayerType[]>>;
 }
 
 const classes = [
@@ -20,7 +23,8 @@ const classes = [
 	'Demon Hunter',
 ];
 
-const AddPlayerForm: React.FC<MyFormProps> = ({ onSubmit }) => {
+const AddPlayerForm: React.FC<MyFormProps> = ({ onSubmit, players, setPlayers }) => {
+
 	const [player, setPlayer] = useState({
 		nickname: '',
 		class: classes[0],
@@ -61,6 +65,8 @@ const AddPlayerForm: React.FC<MyFormProps> = ({ onSubmit }) => {
 					showConfirmButton: true,
 					timer: 4000,
 				})
+				const newPlayer = await response.json();
+				setPlayers([...players, newPlayer]);
 			} else {
 				Swal.fire({
 					icon: "warning",

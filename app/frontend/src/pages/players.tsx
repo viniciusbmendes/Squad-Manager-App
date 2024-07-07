@@ -41,7 +41,7 @@ function Players() {
 	const showFormAlert = () => {
 		MySwal.fire({
 			title: 'Enter Player Details',
-			html: <AddPlayerForm onSubmit={handleFormSubmit} />,
+			html: <AddPlayerForm onSubmit={handleFormSubmit} players={players} setPlayers={setPlayers} />,
 			showCancelButton: true,
 			showConfirmButton: false,
 		});
