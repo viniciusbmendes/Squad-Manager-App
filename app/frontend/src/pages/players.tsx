@@ -49,7 +49,7 @@ function Players() {
 			<button onClick={showFormAlert}>Adicionar Membro</button>
 			<div className='players-list'>
 				{players.map((member: PlayerType) => (
-					<Player key={member.id} {...member} />
+					<Player key={member.player_id} {...member} />
 				))}
 			</div>
 		</div>
