@@ -13,13 +13,15 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "sweetalert2": "^11.12.2",
+    "sweetalert2-react-content": "^5.0.7"
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.3.3",
     "@trybe/eslint-config-frontend": "^1.11.4",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
+    "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.57.0",
     "typescript": "^5.2.2",

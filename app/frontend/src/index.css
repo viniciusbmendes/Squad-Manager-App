@@ -71,3 +71,25 @@ button:focus-visible {
   color: #646cff;
   transition: background-color 0.25s;
 }
+
+.swal2-modal {
+  background-color: #1a1a1a;
+  color: #646cff;
+}
+
+.swal2-modal input {
+  color: #646cff;
+  border: 1px solid #646cff;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 0.5em;
+}
+
+.swal2-html-container button {
+  background-color: #646cff;
+  transition: 0.25s;
+}
+.swal2-html-container button:hover {
+  background-color: #1a1a1a;
+  border: #646cff 1px solid;
+}
