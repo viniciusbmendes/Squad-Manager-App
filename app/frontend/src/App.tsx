@@ -1,4 +1,5 @@
 import './App.css'
+import PlayersProvider from './context/PlayersProvider';
 import Players from './pages/players'
 import {
   BrowserRouter as Router,
@@ -10,6 +11,7 @@ import {
 function App() {
 
   return (
+    <PlayersProvider>
     <Router>
       <Routes>
         <Route path="/" element={<Players />} />
@@ -17,6 +19,7 @@ function App() {
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
     </Router>
+    </PlayersProvider>
   )
 }
 

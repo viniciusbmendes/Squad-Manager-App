@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { request } from '../services/request';
 import { PlayerType } from '../types/PlayerType';
 import Player from '../components/player';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import AddPlayerForm from '../components/add_player_form';
+import PlayersContext from '../context/PlayersContext';
 
 const MySwal = withReactContent(Swal);
 
 function Players() {
-	const [players, setPlayers] = useState([]);
+	const playersContext = useContext(PlayersContext);
+	if (!playersContext) {
+    throw new Error('SomeComponent must be used within a PlayersProvider');
+  }
+	const { players, setPlayers } = playersContext;
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -22,7 +28,7 @@ function Players() {
 			return data;
 		};
 		getPlayers();
-	}, []);
+	}, [setPlayers]);
 
 	const handleFormSubmit = (data: { nickname: string; class: string }) => {
 		MySwal.fire({
