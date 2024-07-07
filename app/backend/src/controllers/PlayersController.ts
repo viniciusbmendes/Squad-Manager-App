@@ -9,4 +9,10 @@ export default class PlayersController {
     const { status, data } = await this.playersService.getAllPlayers();
     return res.status(mapStatusHTTP(status)).json(data);
   }
+
+  public async addPlayer(req: Request, res: Response): Promise<Response> {
+    const player = req.body;
+    const { status, data } = await this.playersService.addPlayer(player);
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
 }
