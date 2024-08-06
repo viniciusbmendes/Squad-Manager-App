@@ -33,10 +33,10 @@ export default function Filter({ setFilteredPlayers }: FilterProps) {
 
 		if (order) {
 			fPlayers.sort((a, b) => {
-				if (a[order] > b[order]) {
+				if (a[order].toLowerCase() > b[order].toLowerCase()) {
 					return 1;
 				}
-				if (a[order] < b[order]) {
+				if (a[order].toLowerCase() < b[order].toLowerCase()) {
 					return -1;
 				}
 				return 0;

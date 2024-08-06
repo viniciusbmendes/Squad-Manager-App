@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -92,4 +96,12 @@ button:focus-visible {
 .swal2-html-container button:hover {
   background-color: #1a1a1a;
   border: #646cff 1px solid;
+}
+
+.Sniper {
+  background-color: #ffee8d;
+}
+
+.Priest {
+  background-color: #74a05b;
 }
