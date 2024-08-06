@@ -16,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Players />} />
         <Route path="/members" element={<Players />} />
+        <Route path="squads" element={<h1>Squads</h1>} />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
     </Router>

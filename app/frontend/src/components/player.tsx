@@ -83,13 +83,31 @@ export default function Player(player: PlayerType) {
 	};
 
 	return (
-		<div className={`player ${player.class}`} key={player_id}>
+		<div
+			className={`bg-${player.class
+				.replace(' ', '')
+				.toLowerCase()} rounded-2xl border-2 border-white overflow-hidden
+				h-min
+				`
+			}
+			key={player_id}
+		>
 			<h3>{nickname}</h3>
 			<p>{classe}</p>
 			<p>Faltas: {missedWars}</p>
 			<div>
-				<button onClick={handleEdit}>Editar</button>
-				<button onClick={handleDelete}>Excluir</button>
+				<button
+					className='bg-neutral-700 w-3/6 hover:bg-neutral-900 transition border-e-2 border-t-2 border-white'
+					onClick={handleEdit}
+				>
+					Editar
+				</button>
+				<button
+					className='bg-neutral-700 w-3/6 hover:bg-neutral-900 transition border-s-1 border-t-2 border-white'
+					onClick={handleDelete}
+				>
+					Excluir
+				</button>
 			</div>
 		</div>
 	);

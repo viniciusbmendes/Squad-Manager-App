@@ -17,7 +17,7 @@ export default function Filter({ setFilteredPlayers }: FilterProps) {
 	const [filter, setFilter] = useState({
 		search: '',
 		classe: '',
-		order: 'nickname' as 'nickname' | 'class' ,
+		order: 'nickname' as 'nickname' | 'class',
 	});
 
 	const { search, classe, order } = filter;
@@ -63,8 +63,15 @@ export default function Filter({ setFilteredPlayers }: FilterProps) {
 				name='search'
 				onChange={handleChange}
 				placeholder='Pesquisar por nome'
+				className='border border-gray-300 rounded-s-2xl h-8 p-2 align-top text-neutral-800'
 			/>
-			<select name='classe' id='classe' value={classe} onChange={handleChange}>
+			<select
+				name='classe'
+				id='classe'
+				value={classe}
+				onChange={handleChange}
+				className='border border-gray-300 rounded-e-2xl h-8 text-neutral-200 bg-neutral-700'
+			>
 				<option value=''>Todas as classes</option>
 				{classes.map((classe, index) => {
 					return (
@@ -74,9 +81,9 @@ export default function Filter({ setFilteredPlayers }: FilterProps) {
 					);
 				})}
 			</select>
-			<form>
-				Ordernar por:
-				<label>
+			<div className='p-4'>
+				<span className='m-2'>Ordernar por :</span>
+				<label className='m-2'>
 					<input
 						type='radio'
 						name='order'
@@ -86,7 +93,7 @@ export default function Filter({ setFilteredPlayers }: FilterProps) {
 					/>
 					Nome
 				</label>
-				<label>
+				<label className='m-2'>
 					<input
 						type='radio'
 						name='order'
@@ -96,7 +103,7 @@ export default function Filter({ setFilteredPlayers }: FilterProps) {
 					/>
 					Classe
 				</label>
-			</form>
+			</div>
 		</div>
 	);
 }
