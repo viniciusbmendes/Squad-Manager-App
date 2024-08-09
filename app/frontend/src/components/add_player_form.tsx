@@ -5,12 +5,15 @@ import { classes } from '../utils/classes';
 
 interface MyFormProps {
 	onSubmit: (data: { nickname: string; class: string }) => void;
-	players:PlayerType[];
-	setPlayers:Dispatch<SetStateAction<PlayerType[]>>;
+	players: PlayerType[];
+	setPlayers: Dispatch<SetStateAction<PlayerType[]>>;
 }
 
-const AddPlayerForm: React.FC<MyFormProps> = ({ onSubmit, players, setPlayers }) => {
-
+const AddPlayerForm: React.FC<MyFormProps> = ({
+	onSubmit,
+	players,
+	setPlayers,
+}) => {
 	const [player, setPlayer] = useState({
 		nickname: '',
 		class: classes[0],
@@ -40,32 +43,32 @@ const AddPlayerForm: React.FC<MyFormProps> = ({ onSubmit, players, setPlayers })
 
 			if (response.status === 409) {
 				Swal.fire({
-					icon: "warning",
-					title: "Oops...",
-					text: "Ja existe um player com esse nome!",
+					icon: 'warning',
+					title: 'Oops...',
+					text: 'Ja existe um player com esse nome!',
 				});
 			} else if (response.ok) {
 				Swal.fire({
-					icon: "success",
-					title: "Player cadastrado com sucesso!",
+					icon: 'success',
+					title: 'Player cadastrado com sucesso!',
 					showConfirmButton: true,
 					timer: 4000,
-				})
+				});
 				const newPlayer = await response.json();
 				setPlayers([...players, newPlayer]);
 			} else {
 				Swal.fire({
-					icon: "warning",
-					title: "Oops...",
-					text: "Resposta inesperada do servidor! Tente novamente!",
+					icon: 'warning',
+					title: 'Oops...',
+					text: 'Resposta inesperada do servidor! Tente novamente!',
 				});
 			}
 		} catch (error) {
 			console.error('Error:', error);
 			Swal.fire({
-				icon: "error",
-				title: "Oops...",
-				text: "Algo deu errado! Tente novamente!",
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Algo deu errado! Tente novamente!',
 			});
 		}
 	};
@@ -76,21 +79,26 @@ const AddPlayerForm: React.FC<MyFormProps> = ({ onSubmit, players, setPlayers })
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<label>
-				Nick:
+		<form onSubmit={handleSubmit} className='text-white'>
+			<label className='block'>
+				<span>Nick:</span>
 				<input
 					type='text'
 					name='nickname'
 					value={player.nickname}
 					onChange={handleChange}
+					className='border border-gray-300 rounded-2xl h-8 pl-4 text-neutral-800 w-48 m-3 align-middle'
 					required
 				/>
 			</label>
-			<br />
-			<label>
-				Class:
-				<select name='class' value={player.class} onChange={handleChange}>
+			<label className='block'>
+				<span>Class:</span>
+				<select
+					name='class'
+					value={player.class}
+					onChange={handleChange}
+					className='border border-gray-300 rounded-2xl h-8 pl-3 text-neutral-800 w-48 m-3 align-middle'
+				>
 					{classes.map((c) => (
 						<option key={c} value={c}>
 							{c}
@@ -99,8 +107,18 @@ const AddPlayerForm: React.FC<MyFormProps> = ({ onSubmit, players, setPlayers })
 				</select>
 			</label>
 			<br />
-			<button type='submit'>Cadastrar</button>
-			<button onClick={handleCancel}>Cancelar</button>
+			<button
+				onClick={handleCancel}
+				className='bg-red-500 w-40 m-2 h-10 rounded hover:bg-neutral-950 transition duration-300'
+			>
+				Cancelar
+			</button>
+			<button
+				type='submit'
+				className='bg-blue-500 w-40 m-2 h-10 rounded hover:bg-neutral-950 transition duration-300'
+			>
+				Cadastrar
+			</button>
 		</form>
 	);
 };

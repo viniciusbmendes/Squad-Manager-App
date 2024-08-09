@@ -43,6 +43,10 @@ function Players() {
 	const showFormAlert = () => {
 		MySwal.fire({
 			title: 'Enter Player Details',
+			customClass: {
+				popup: 'bg-neutral-700',
+				title: 'text-white',
+			},
 			html: (
 				<AddPlayerForm
 					onSubmit={handleFormSubmit}
@@ -70,7 +74,7 @@ function Players() {
 				Adicionar Membro
 			</button>
 			<Filter setFilteredPlayers={setFilteredPlayers} />
-			<div className='bg-neutral-800 mb-2 grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-3 p-2 rounded-2xl border-2 border-white overscroll-none overflow-auto'>
+			<div className='bg-neutral-800 mb-2 grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-2 p-2 rounded border-2 border-white overscroll-none overflow-auto scrollbar-custom'>
 				{filteredPlayers.map((member: PlayerType) => (
 					<Player key={member.player_id} {...member} />
 				))}

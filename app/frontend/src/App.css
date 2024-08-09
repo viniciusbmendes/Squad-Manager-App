@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Estilizando a barra de rolagem */
+.scrollbar-custom::-webkit-scrollbar {
+	@apply w-2; /* Largura e altura da barra de rolagem */
+  
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+	@apply bg-gray-400 rounded-lg; /* Cor e bordas da "thumb" */
+    border-radius: 9999px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+	@apply bg-gray-200; /* Cor do fundo da barra de rolagem */
+  border-radius: 9999px;
+}

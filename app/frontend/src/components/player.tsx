@@ -69,6 +69,10 @@ export default function Player(player: PlayerType) {
 		console.log('Editando jogador');
 		MySwal.fire({
 			title: 'Enter Player Details',
+			customClass: {
+				popup: 'bg-neutral-700',
+				title: 'text-white',
+			},
 			html: (
 				<EditPlayerForm
 					playerData={player}

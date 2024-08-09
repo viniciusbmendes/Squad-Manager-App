@@ -74,32 +74,48 @@ const EditPlayerForm: React.FC<MyFormProps> = ({
 	};
 
 	return (
-			<form onSubmit={handleEdit}>
-				<label>
-					Nick:
-					<input
-						type='text'
-						name='nickname'
-						value={player.nickname}
-						onChange={handleChange}
-						required
-					/>
-				</label>
-				<br />
-				<label>
-					Class:
-					<select name='class' value={player.class} onChange={handleChange}>
-						{classes.map((c) => (
-							<option key={c} value={c}>
-								{c}
-							</option>
-						))}
-					</select>
-				</label>
-				<br />
-				<button type='submit'>Confirmar</button>
-				<button onClick={handleCancel}>Cancel</button>
-			</form>
+		<form onSubmit={handleEdit} className='text-white'>
+			<label>
+				Nick:
+				<input
+					type='text'
+					name='nickname'
+					value={player.nickname}
+					onChange={handleChange}
+					className='border border-gray-300 rounded-2xl h-8 pl-4 text-neutral-800 w-48 m-3 align-middle'
+					required
+				/>
+			</label>
+			<br />
+			<label>
+				Class:
+				<select
+					name='class'
+					value={player.class}
+					onChange={handleChange}
+					className='border border-gray-300 rounded-2xl h-8 pl-4 text-neutral-800 w-48 m-3 align-middle'
+				>
+					{classes.map((c) => (
+						<option key={c} value={c}>
+							{c}
+						</option>
+					))}
+				</select>
+			</label>
+			<br />
+			<button
+				onClick={handleCancel}
+				className='bg-red-500 w-40 m-2 h-10 rounded hover:bg-neutral-950 transition duration-300'
+			>
+				Cancel
+			</button>
+			<button
+				className='bg-blue-500 w-40 m-2 h-10 rounded hover:bg-neutral-950 transition duration-300'
+				type='submit'
+			>
+				Confirmar
+			</button>
+		</form>
 	);
 };
 

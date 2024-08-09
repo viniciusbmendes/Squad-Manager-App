@@ -15,6 +15,7 @@ O **Squad Manager** é um projeto criado para ajudar guildas do jogo **Ragnarok 
 - **Frontend:**
   - React
   - TypeScript
+  - Tailwind
 - **Backend:**
   - Node.js
   - TypeScript
