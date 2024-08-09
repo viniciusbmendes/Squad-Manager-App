@@ -70,7 +70,7 @@ export default function Filter({ setFilteredPlayers }: FilterProps) {
 				id='classe'
 				value={classe}
 				onChange={handleChange}
-				className='border border-gray-300 rounded-e-2xl h-8 text-neutral-200 bg-neutral-700'
+				className='border border-gray-300 rounded-e-2xl h-8 text-neutral-200 bg-neutral-700 appearance-none px-4'
 			>
 				<option value=''>Todas as classes</option>
 				{classes.map((classe, index) => {
@@ -103,6 +103,19 @@ export default function Filter({ setFilteredPlayers }: FilterProps) {
 					/>
 					Classe
 				</label>
+			</div>
+			<div>
+				Numero de jogadores: {players.length}
+				<br />
+				{classes.map((classe, index) => {
+					const count = players.filter((player) => player.class === classe)
+						.length;
+					return (
+						<span key={index} className='m-1'>
+							{classe}: {count}{' |'}
+						</span>
+					);
+				})}
 			</div>
 		</div>
 	);
