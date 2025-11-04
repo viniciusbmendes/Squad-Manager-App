@@ -70,7 +70,7 @@ export default function Filter({ setFilteredPlayers }: FilterProps) {
 				id='classe'
 				value={classe}
 				onChange={handleChange}
-				className='border border-gray-300 rounded-e-2xl h-8 text-neutral-200 bg-neutral-700 appearance-none px-4'
+				className='border border-gray-300 rounded-e-2xl h-8 text-neutral-200 bg-neutral-700 appearance-none px-4 hover:cursor-pointer'
 			>
 				<option value=''>Todas as classes</option>
 				{classes.map((classe, index) => {
